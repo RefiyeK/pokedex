@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+}
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: var(--font_text);
+}
+
+.container_limit {
+    max-width: 1440px; 
+    margin: 0 auto;
+    padding: 0 30px;
+}
