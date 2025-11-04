@@ -1,0 +1,15 @@
+
+function getPokemonCardTepmlate(name, image, types) {
+    let typesHTML = '';
+    for (let i = 0; i < types.length; i++) {
+        const typeName = types[i].type.name;
+        typesHTML += `<span class="type_badge" style="background: var(--type-${typeName})">${typeName}</span>`;
+    }
+    return `
+        <div class="pokemon_card" style="background: var(--type-${types[0].type.name})">
+            <h3 class="pokemon_name">${name}</h3>
+            <img src="${image}" alt=${name}>
+            <div class="pokemon_types">${typesHTML}</div>
+            </div>
+    `;
+}

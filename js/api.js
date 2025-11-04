@@ -10,22 +10,23 @@ async function loadInitialPokemon() {
 
         for (let i = 0; i < data.results.length; i++) {
             const pokemon = data.results[i];
-           
-            console.log(`Lade Details für: ${pokemon.name}`);
-
             const detailResponse = await fetch(pokemon.url);
             const details = await detailResponse.json();
         
-            console.log(`${details.name} geladen!`, details);
+            const name = details.name;
+            const image = details.sprites.other['official-artwork'].front_default;
+            const types = details.types;
+
+            const html = getPokemonCardTepmlate(name, image, types);
+            const container = document.getElementById('pokemon_container');
+            container.innerHTML += html;
         }
-            console.log('Alle Pokemon geladen');
     } catch (error) {
-            console.error('Fehler beim Laden:', error);
         }
 }
 
 
 function init() {
-    console.log('App startet');
+
    loadInitialPokemon();
 }
