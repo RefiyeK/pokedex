@@ -3,9 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <meta name="description" content="Modern Pokedex web app - Search and explore Pokemon">
+    <title>Pokedex</title>
+    <link rel="icon" class="favicon" type="image/x-icon" href="./assets/img/pokemon.png">
+    <link rel="stylesheet" href="./css/standard.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
-<body>
-    
+<body onload="init()">
+    <header class="header container_limit">
+      
+        <a href="./index.html">
+            <div class="header_left" >
+                <img src="./assets/img/pikachu.png" alt="Pikachu" class="logo">
+                <h1 class="title">Pokedex</h1>
+            </div>
+        </a>
+        
+
+        <div class="header-right">
+            <div class="search_container">
+                <input type="text" id="search_input" class="search_input" placeholder="Search Pokemon..." minlength="3" aria-label="Search for Pokemon" oninput="activateSearchBtn()">
+                <button onclick="searchPokemon()" id="search_btn" class="search_btn" disabled aria-label="Search button">
+                    🔍
+                </button>
+            </div>
+        </div>
+      
+    </header>
+
+    <main id="main_content" class="main_content">
+        <div id="pokemon_container" class="pokemon_container"> </div>
+            <div class="load_more_container container_limit">
+                <button id="load_more_btn" class="load_more_btn" aria-label="Load more Pokemon">
+                    Load  More Pokemon
+                </button>
+    </main>
+    <dialog id="pokemon_dialog" class="pokemon_dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
+        <div class="dialog_content">
+            <button type="button" class="close_button" onclick="closeDialog()">SCHLIEßEN</button>  
+           <div id="imageNav">
+                <div id="dialog_pokemon_content"></div>
+                <button type="button" class="nav_button prev_button" onclick="navigatePokemon(-1)">◀</button>
+                <button type="button" class="nav_button next_button" onclick="navigatePokemon(+1)">▶</button>
+            </div>              
+        </div>
+    </dialog>
+
+            </div>
+                <button id="backHomeBtn" class="backHomeBtn(hidden)" aria-label="Return to homepage" href="./index.html"> Zurück zur Startseite
+            </button>
+    <script src="./js/api.js"></script>
+    <script src="./js/template.js"></script>
+    <script src="./js/script.js"></script>
 </body>
 </html>
