@@ -1,10 +1,8 @@
 function getPokemonCardTemplate(name, image, types, index) {
-    let typesHTML = '';
-    for (let i = 0; i < types.length; i++) {
-        const typeName = types[i].type.name;
-        typesHTML += `<span class="type-badge type-${typeName}">${typeName}</span>`;
-    }
+    
+    let typesHTML = generateTypesHTML(types);
     const primaryType = types[0].type.name;
+    
     return `
 
         <div onclick="openDialog(${index})" class="pokemon_card bg-type-${primaryType}">
@@ -16,15 +14,19 @@ function getPokemonCardTemplate(name, image, types, index) {
     `;
 }
 
-function getPokemonDetailTemplate(pokemon) {
-
-    let typesHTML = "";
-    for (let i = 0; i < pokemon.types.length; i++) {
-        const typeName = pokemon.types[i].type.name;
-        typesHTML += `<span class="type-badge type-${typeName}">${typeName}</span>`;
-    }
+function getPokemonDetailTemplate(pokemon, typesHTML) {
 
     return `
+        <div class="dialog_content" onclick="event.stopPropagation()">
+            <button type="button" class="close_button" onclick="closeDialog()">SCHLIEßEN</button>  
+            
+            <div id="imageNav">
+                <div id="dialog_pokemon_content"></div>
+                <button type="button" class="nav_button prev_button" onclick="navigatePokemon(-1)">◀</button>
+                <button type="button" class="nav_button next_button" onclick="navigatePokemon(+1)">▶</button>
+            </div>              
+        </div>
+
         <div class="pokemon_detail"> 
             <img src="${pokemon.sprites.other['official-artwork'].front_default}"
                 alt="${pokemon.name}"
@@ -49,6 +51,8 @@ function getPokemonDetailTemplate(pokemon) {
                             <span class="stat_value">${pokemon.stats[5].base_stat}</span>
                         </div>
                 </div>
+                
         </div>
+        
     `;
 }

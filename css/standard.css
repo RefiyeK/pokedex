@@ -56,15 +56,6 @@ html, body {
   font-weight: 700;
   src: url('../assets/fonts/open-sans/open-sans-v44-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* 
-@font-face {
-  font-display: swap;
-  font-family: 'Bangers';
-  font-style: normal;
-  font-weight: 400;
-  src: url('../assets/fonts/bangers/bangers-v25-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ 
- } 
- */
 
 :root {
     --bg-darkest: #0A0E12;
@@ -100,7 +91,6 @@ html, body {
 
     --font_headline: 'Merriweather' sans-serif;
     --font_text: 'Open Sans' sans-serif;
-
 }
 
 body {
@@ -126,8 +116,4 @@ button {
 button:disabled {
     cursor: not-allowed;
     opacity: auto;
-}
-
-.hidden {
-    display: none !important;
 }

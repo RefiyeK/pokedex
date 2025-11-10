@@ -10,25 +10,23 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body onload="init()">
-    <header class="header container_limit">
-      
-        <a href="./index.html">
-            <div class="header_left" >
-                <img src="./assets/img/pikachu.png" alt="Pikachu" class="logo">
-                <h1 class="title">Pokedex</h1>
-            </div>
-        </a>
-        
-
-        <div class="header-right">
-            <div class="search_container">
-                <input type="text" id="search_input" class="search_input" placeholder="Search Pokemon..." minlength="3" aria-label="Search for Pokemon" oninput="activateSearchBtn()">
-                <button onclick="searchPokemon()" id="search_btn" class="search_btn" disabled aria-label="Search button">
+    <header>
+        <div class="header container_limit">
+            <a href="./index.html">
+                <div class="header_left" >
+                    <img src="./assets/img/pikachu.png" alt="Pikachu" class="logo">
+                    <h1 class="title">Pokedex</h1>
+                </div>
+            </a>
+            <div class="header-right">
+                <div class="search_container">
+                    <input type="text" id="search_input" class="search_input" placeholder="Search Pokemon..." minlength="3" aria-label="Search for Pokemon" oninput="activateSearchBtn()">
+                    <button onclick="searchPokemon()" id="search_btn" class="search_btn" disabled aria-label="Search button">
                     🔍
-                </button>
+                    </button>
+                </div>
             </div>
         </div>
-      
     </header>
 
     <main id="main_content" class="main_content">
@@ -37,21 +35,17 @@
                 <button id="load_more_btn" class="load_more_btn" aria-label="Load more Pokemon">
                     Load  More Pokemon
                 </button>
-    </main>
-    <dialog id="pokemon_dialog" class="pokemon_dialog" aria-labelledby="dialog-title" aria-describedby="dialog-description">
-        <div class="dialog_content">
-            <button type="button" class="close_button" onclick="closeDialog()">SCHLIEßEN</button>  
-           <div id="imageNav">
-                <div id="dialog_pokemon_content"></div>
-                <button type="button" class="nav_button prev_button" onclick="navigatePokemon(-1)">◀</button>
-                <button type="button" class="nav_button next_button" onclick="navigatePokemon(+1)">▶</button>
-            </div>              
-        </div>
-    </dialog>
-
             </div>
-                <button id="backHomeBtn" class="backHomeBtn(hidden)" aria-label="Return to homepage" href="./index.html"> Zurück zur Startseite
-            </button>
+    </main>
+
+        <div id="loading_spinner" class="loading_spinner hidden">
+            <div class="spinner"><img src="./assets/img/pokemon.png" alt="Pokemon Ball"></div>
+            <p>Loading....</p>
+        </div>
+
+    <dialog id="pokemon_dialog" class="pokemon_dialog" onclick="closeDialog()" aria-labelledby="dialog-title" aria-describedby="dialog-description"></dialog>
+       
+        <button id="backBtn" class="back_btn hidden" onclick="loadPokemon()" aria-label="Reset to Homepage">Zurück zur Startseite</button>
     <script src="./js/api.js"></script>
     <script src="./js/template.js"></script>
     <script src="./js/script.js"></script>

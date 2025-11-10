@@ -34,6 +34,7 @@ a {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: auto;
 }
 
 .search_container {
@@ -86,10 +87,9 @@ h3 {
 }
 
 .nav_button {
-    position:absolute;
-    top: 40%;
-    transform: translateY(-50%);
-    height: 695px;
+    position: absolute;
+    top: -129%;
+    height: 715px;
     width: 40px;
     border-radius: 10px;
     opacity: 0.8;
@@ -112,7 +112,8 @@ h3 {
 
 #imageNav {
     position: relative;
-    width: fit-content;
+    /* width: fit-content; */
+    max-width: 100%;
     margin: 0 auto;
     padding-top: 40px;
 }
@@ -156,8 +157,9 @@ h3 {
 }
 
 img {
-    width: 250px;
-    height: 250px;
+    width: 100%;
+    max-width: 250px;
+    height: auto;
 }
 
 .pokemon_types {
@@ -196,17 +198,8 @@ img {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     margin-bottom: 20px;
 }
-.pokemon_detail_name image {
-    width: 250px;
-    height: 250px;
-    display: block;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 15px;
-    padding: 20px;
-    margin: 0 auto;
-}
 
-#backHomeBtn {
+#backBtn {
     display: flex;
     justify-content: center;
     background-color: var(--accent);
@@ -217,7 +210,8 @@ img {
     border-radius: 10px;
     margin: auto;
 }
-.backHomeBtn:hover:not(:disabled) {
+
+.back_btn:hover:not(:disabled) {
     background: #2563eb;
     transform: scale(1.05);
 }
@@ -229,14 +223,11 @@ img {
     transform: translateX(-50%);
     background: rgba(255, 255, 255, 0.2);
     color: white;
-    padding: 8xp 15px;
+    padding: 5px 8px;
     border-radius: 10px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: bold;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
+    z-index: 1;
 }
 
 .close_button:hover {
@@ -258,10 +249,11 @@ img {
    border: none;
     border-radius: 20px;
     background: black;
-    max-width: auto;
     margin: auto;
     border-bottom-left-radius: 31%;
     border-bottom-right-radius: 31%;
+    max-width: 600px;
+    width: 90%;
 }
 
 .pokemon_dialog::backdrop {
@@ -272,9 +264,9 @@ img {
 }
 
 .dialog_content {
-    position: relative;
+    /* position: relative;
     background: var(--bg-darkest);
-    border-radius: 20px;
+    border-radius: 20px; */
     padding: 50px;
 }
 
@@ -283,6 +275,7 @@ img {
     display: flex;
     justify-content: center;
     gap: 15px;
+    flex-wrap: wrap;
 }
 
 .stat_item {
@@ -365,10 +358,38 @@ img {
     background: var(--type-fairy);
 }
 
-
-
 @keyframes spin {
     to { transform: rotate(360deg); }
+}
+
+.loading_spinner {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 15px;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: black;
+}
+
+.spinner {
+    width: 100px;
+    height: 100px;
+    border: 6px solid rgba(255, 255, 255, 0.9); 
+    border-top: 6px solid var(--accent);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+.hidden {
+    display: none !important;
 }
 
 @media (max-width: 768px) {
@@ -377,22 +398,68 @@ img {
         gap: 15px;
         padding: 15px;
     }
-    .pokemon_detail_image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
-        background-color: var(--accent);
+}
+
+@media (max-width: 600px) {
+     .type-badge {
+    font-size: 20px;
+    }
+    .stat_label {
+    font-size: 18px;
+    }
+    .stat_value {
+        font-size: 18px;
     }
     .pokemon_stats {
-        gap: 0px;
+        gap: 6px;
     }
 }
 
-@media (max-width: 480px) {
-    /* .pokemon_card {
-        width: 130px;
-    } */
+@media (max-width: 570px) {
     .title {
         font-size: 24px;
+    }
+    .dialog_content {
+        padding: 0px;
+    }
+    .nav_button {
+        width: 30px;
+        height: 682px;
+    }
+    .prev_button {
+        left: 0;
+    }
+    .next_button {
+        right: 0;
+    }
+    .stat_item {
+        gap: 1px;
+    }
+     .pokemon_stats {
+        gap: 2px;
+    }
+}
+
+@media (max-width: 517px) {
+    .nav_button {
+        height: 756px;
+    }
+}
+
+@media (max-width: 440px) {
+    .pokemon_detail_name {
+        font-size: 20px;
+    }
+    .type-badge {
+    font-size: 18px;
+    }
+    .stat_label {
+    font-size: 16px;
+    }
+    .stat_value {
+        font-size: 16px;
+    }
+    .nav_button {
+        height: 674px;
     }
 }
